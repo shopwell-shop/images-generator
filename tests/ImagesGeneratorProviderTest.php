@@ -15,10 +15,10 @@ class ImagesGeneratorTest extends TestCase
     {
         $this->faker = \Faker\Factory::create();
         $this->faker->addProvider(new ImagesGeneratorProvider($this->faker));
-        
+
         $this->files = null;
     }
-    
+
     /**
      * Clean up any temporary images
      */
@@ -30,12 +30,12 @@ class ImagesGeneratorTest extends TestCase
             }
         }
     }
-    
+
     private function _testImage($test)
     {
         $this->assertNotNull(@exif_imagetype($test));
     }
-    
+
     /**
      * Test creating an image with the default setup
      *
@@ -46,7 +46,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator();
         $this->_testImage($test);
     }
-    
+
     /**
      * Test using a invalid directory, /dev/null
      *
@@ -60,7 +60,7 @@ class ImagesGeneratorTest extends TestCase
             $this->assertEquals($e->getMessage(), 'Cannot write to directory "/dev/null"');
         }
     }
-    
+
     /**
      * Test using text using a colour without a hex
      *
@@ -71,7 +71,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'png', true, null, '#0000ff');
         $this->_testImage($test);
     }
-    
+
     /**
      * Test using text using a colour with a hex
      *
@@ -82,7 +82,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'png', true, null, '0000ff');
         $this->_testImage($test);
     }
-    
+
     /**
      * Test using a background colour with a hex
      *
@@ -93,7 +93,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'png', true, 'ImagesGenerator', null, '#0000ff');
         $this->_testImage($test);
     }
-    
+
     /**
      * Test using a background colour without a hex
      *
@@ -104,7 +104,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'png', true, 'ImagesGenerator', null, '0000ff');
         $this->_testImage($test);
     }
-    
+
     /**
      * Test showing text over the image
      *
@@ -115,7 +115,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'png', true, 'ImagesGenerator');
         $this->_testImage($test);
     }
-    
+
     /**
      * Test using the width and height as the text
      *
@@ -126,7 +126,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'png', true, true);
         $this->_testImage($test);
     }
-    
+
     /**
      * Test creating a image with an extention of .jpg
      *
@@ -137,7 +137,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'jpg');
         $this->_testImage($test);
     }
-    
+
     /**
      * Test creating a image with an extention of .jpeg
      *
@@ -148,7 +148,7 @@ class ImagesGeneratorTest extends TestCase
         $this->files[] = $test = $this->faker->imageGenerator(null, 640, 480, 'jpeg');
         $this->_testImage($test);
     }
-    
+
     /**
      * Test creating a image with an extention of .png
      *
