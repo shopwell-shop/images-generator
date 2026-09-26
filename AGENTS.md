@@ -19,6 +19,11 @@ coding agent must read this file before changing files in this repository.
 - Do not force-push or copy upstream tags.
 - Runtime code and workflows must not depend on `shopware/*`, `shopwarelabs/*`,
   `@shopware-ag/*`, or their GitHub repositories.
+- Shopwell-owned npm and Composer dependencies must use a stable version published
+  to a real registry. Git URLs, GitHub shorthand/archive/tarball URLs, commits,
+  branches, `dev-*`, `file:`, `link:`, and external `workspace:` references are forbidden.
+- A package release is complete only after the exact version is queryable through
+  its registry API; Git tags, GitHub Releases, and green workflows are insufficient.
 - Before commit, push, release, or sync completion, run:
   `../sync-upstream/bin/syncctl audit-license images-generator` and
   `../sync-upstream/bin/syncctl audit-upstream-dependencies images-generator`.
